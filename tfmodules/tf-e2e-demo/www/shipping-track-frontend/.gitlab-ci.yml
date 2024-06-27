@@ -1,0 +1,24 @@
+image: node:10.11.0
+
+before_script:
+  - apt-get update -qq && apt-get install
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+    - build/
+
+deploy:
+  stage: deploy
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - scp -o stricthostkeychecking=no -r ./build/. ubuntu@$SERVER_IP:/var/www/html

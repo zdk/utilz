@@ -1,0 +1,13 @@
+gcp_project1_credentials_file_path = "file path"
+gcp_project1 = "project id"
+gcp_project1_region = "region"
+gcp_project1_provider_alias = "alias"
+project1_network_name = "network name"
+cgnat_project1_subnet = "subnet"
+
+gcp_project2_credentials_file_path = "file path"
+gcp_project2 = "project id"
+gcp_project2_region = "region"
+gcp_project2_provider_alias = "alias"
+project2_network_name = "network name"
+cgnat_project2_subnet = "subnet"
