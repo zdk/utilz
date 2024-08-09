@@ -1,0 +1,24 @@
+---
+- name: Install Git on Linux server
+  hosts: all
+  become: yes # Use sudo to run the commands
+
+  tasks:
+    - name: Update apt package index (Debian/Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Git (Debian/Ubuntu)
+      apt:
+        name: git
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Clone dotfiles
+      git:
+        repo: https://github.com/zdk/dotfiles.git
+        dest: "/home/{{ ansible_user }}/dotfiles"
+        version: master
+        update: yes
+        recursive: yes # This will clone submodules as well
+      become: no # Run as the ansible_user, not as root

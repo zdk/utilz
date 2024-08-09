@@ -1,0 +1,2 @@
+[homeservers]
+srv.localnet ansible_user=zdk
